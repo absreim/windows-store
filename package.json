@@ -1,0 +1,11 @@
+{
+  "name": "windows-store",
+  "version": "1.0.0",
+  "description": "Mini e-commerce site that sells old versions of Windows",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brook Li",
+  "license": "ISC"
+}

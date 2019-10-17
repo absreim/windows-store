@@ -1,17 +1,19 @@
 const path = require('path');
 
 module.exports = {
-  entry: [
-    'src/index.jsx'
-  ],
+  mode: 'development',
+  entry: path.join(__dirname, 'src', 'index.jsx'),
   output: {
-    path: path.resolve(__dirname, 'public'),
+    path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
   devtool: 'source-map',
+  devServer: {
+    contentBase: path.join(__dirname, 'public'),
+  },
   module: {
     rules: [
       {
@@ -21,4 +23,4 @@ module.exports = {
       },
     ],
   },
-}
+};

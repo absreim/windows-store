@@ -1,7 +1,7 @@
 import { getDataSourceItems } from './mock-data-source';
 
 const GOT_INVENTORY = 'GOT_INVENTORY';
-const CHANGE_QUANTITY = 'CHANGE_QUANTITY';
+const SET_QUANTITY = 'SET_QUANTITY';
 
 export const getInventory = () => (dispatch) => (
   dispatch(gotInventory(getDataSourceItems()))
@@ -12,8 +12,8 @@ const gotInventory = (inventory) => ({
   inventory
 });
 
-export const changeQuantity = (id, amount) => ({
-  type: CHANGE_QUANTITY,
+export const setQuantity = (id, amount) => ({
+  type: SET_QUANTITY,
   id,
   amount,
 });
@@ -27,11 +27,11 @@ export default function (state = initialState, action) {
         action.inventory[id].quantity = 0;
       });
       return action.inventory;
-    case CHANGE_QUANTITY: {
+    case SET_QUANTITY: {
       const { id, amount } = action;
       const newCart = Object.assign({}, state.cart);
       const newCartItem = Object.assign({}, newCart[id]);
-      newCartItem.quantity += amount;
+      newCartItem.quantity = amount;
       newCart[id] = newCartItem;
       return newCart;
     }

@@ -1,4 +1,4 @@
-export const getDataSourceItems = () => ({
+export default () => ({
   1: {
     id: 1,
     name: 'Windows 95',

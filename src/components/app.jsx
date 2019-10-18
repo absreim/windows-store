@@ -1,21 +1,22 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import CartCounter from './cart-counter';
 import CartList from './cart-list';
-import {getInventory} from '../store/cart';
+import { getInventory } from '../store/cart';
 
 class App extends Component {
   componentDidMount() {
-    this.props.getInventory();
+    const { getInventory } = this.props;
+    getInventory();
   }
 
   render() {
     return (
-      <Fragment>
+      <>
         <CartCounter />
         <CartList />
-      </Fragment>
+      </>
     );
   }
 }

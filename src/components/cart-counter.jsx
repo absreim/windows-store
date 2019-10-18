@@ -1,19 +1,19 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-const CartCounter = function ({numItems}) {
+function CartCounter({ numItems }) {
   return (
-    <p>Number of items in cart:&nbsp;{numItems}</p>
+    <p>
+      Number of items in cart:
+      {numItems}
+    </p>
   );
 }
 
-const mapStateToProps = (state) => {
-  const keys = Object.keys(state.cart);
-  return {
-    numItems: keys.reduce((prevCount, id) => (
-      state.cart[id].quantity + prevCount
-    ), 0),
-  }
-}
+const mapStateToProps = ({ cart }) => ({
+  numItems: Object.keys(cart).reduce((prevCount, id) => (
+    cart[id].quantity + prevCount
+  ), 0),
+});
 
 export default connect(mapStateToProps)(CartCounter);

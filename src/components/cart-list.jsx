@@ -1,9 +1,9 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-import {setQuantity} from '../store/cart';
+import { setQuantity } from '../store/cart';
 
-const CartList = function ({cart, setQuantity}) {
+function CartList({ cart, setQuantity }) {
   return (
     <table>
       <thead>
@@ -49,10 +49,10 @@ const CartList = function ({cart, setQuantity}) {
 
 const mapStateToProps = (state) => ({
   cart: state.cart,
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
-  setQuantity: (id, quantity) => dispatch(setQuantity(id, quantity))
-})
+  setQuantity: (id, quantity) => dispatch(setQuantity(id, quantity)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartList);

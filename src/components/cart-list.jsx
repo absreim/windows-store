@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { setQuantity } from '../store/cart';
 
-function CartList({ cart, setQuantity }) {
+function CartList({ cart, setQuantityById }) {
   return (
     <table>
       <thead>
@@ -17,7 +18,7 @@ function CartList({ cart, setQuantity }) {
       <tbody>
         {
           Object.keys(cart).map((id) => {
-            const {name, quantity} = cart[id];
+            const { name, quantity } = cart[id];
             return (
               <tr key={id}>
                 <td>{name}</td>
@@ -25,7 +26,7 @@ function CartList({ cart, setQuantity }) {
                 <td>
                   <button
                     type="button"
-                    onClick={() => setQuantity(id, quantity + 1)}
+                    onClick={() => setQuantityById(id, quantity + 1)}
                   >
                     +
                   </button>
@@ -33,7 +34,7 @@ function CartList({ cart, setQuantity }) {
                 <td>
                   <button
                     type="button"
-                    onClick={() => setQuantity(id, quantity - 1)}
+                    onClick={() => setQuantityById(id, quantity - 1)}
                   >
                     -
                   </button>
@@ -47,12 +48,23 @@ function CartList({ cart, setQuantity }) {
   );
 }
 
+CartList.propTypes = {
+  cart: PropTypes.objectOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      quantity: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
+  setQuantityById: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = (state) => ({
   cart: state.cart,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setQuantity: (id, quantity) => dispatch(setQuantity(id, quantity)),
+  setQuantityById: (id, quantity) => dispatch(setQuantity(id, quantity)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartList);

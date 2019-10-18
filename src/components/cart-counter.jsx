@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 function CartCounter({ numItems }) {
   return (
@@ -9,6 +10,10 @@ function CartCounter({ numItems }) {
     </p>
   );
 }
+
+CartCounter.propTypes = {
+  numItems: PropTypes.number.isRequired,
+};
 
 const mapStateToProps = ({ cart }) => ({
   numItems: Object.keys(cart).reduce((prevCount, id) => (

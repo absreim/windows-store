@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import CartCounter from './cart-counter';
 import CartList from './cart-list';
@@ -7,8 +8,8 @@ import { getInventory } from '../store/cart';
 
 class App extends Component {
   componentDidMount() {
-    const { getInventory } = this.props;
-    getInventory();
+    const { getItemList } = this.props;
+    getItemList();
   }
 
   render() {
@@ -21,8 +22,12 @@ class App extends Component {
   }
 }
 
+App.propTypes = {
+  getItemList: PropTypes.func.isRequired,
+};
+
 const mapDispatchToProps = (dispatch) => ({
-  getInventory: () => dispatch(getInventory()),
+  getItemList: () => dispatch(getInventory()),
 });
 
 export default connect(null, mapDispatchToProps)(App);

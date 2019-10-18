@@ -19,7 +19,7 @@ function formatPrice(totalCents) {
 
 function CartList({ cart, setQuantityById }) {
   return (
-    <table>
+    <table className="cart-list">
       <thead>
         <tr>
           <th>Image</th>

@@ -29,7 +29,7 @@ export default function (state = initialState, action) {
       return action.inventory;
     case SET_QUANTITY: {
       const { id, amount } = action;
-      const newCart = Object.assign({}, state.cart);
+      const newCart = Object.assign({}, state);
       const newCartItem = Object.assign({}, newCart[id]);
       newCartItem.quantity = amount;
       newCart[id] = newCartItem;

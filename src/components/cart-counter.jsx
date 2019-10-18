@@ -7,10 +7,13 @@ const CartCounter = function ({numItems}) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  numItems: Object.keys(state.cart).reduce((id, prevCount) => (
-    state.cart[id].quantity + prevCount
-  ), 0),
-})
+const mapStateToProps = (state) => {
+  const keys = Object.keys(state.cart);
+  return {
+    numItems: keys.reduce((prevCount, id) => (
+      state.cart[id].quantity + prevCount
+    ), 0),
+  }
+}
 
-export default connect(CartCounter)(mapStateToProps);
+export default connect(mapStateToProps)(CartCounter);

@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import CartCounter from './cart-counter';
-import CartList from './cart-list;'
+import CartList from './cart-list';
 import {getInventory} from '../store/cart';
 
 class App extends Component {
@@ -24,4 +24,4 @@ const mapDispatchToProps = (dispatch) => ({
   getInventory: () => dispatch(getInventory()),
 });
 
-export default connect(App)(null, mapDispatchToProps);
+export default connect(null, mapDispatchToProps)(App);

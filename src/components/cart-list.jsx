@@ -55,4 +55,4 @@ const mapDispatchToProps = (dispatch) => ({
   setQuantity: (id, quantity) => dispatch(setQuantity(id, quantity))
 })
 
-export default connect(CartList)(mapStateToProps, mapDispatchToProps);
+export default connect(mapStateToProps, mapDispatchToProps)(CartList);

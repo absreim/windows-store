@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 function CartCounter({ numItems }) {
   return (
     <p>
-      Number of items in cart:
+      Number of items in cart:&nbsp;
       {numItems}
     </p>
   );
